@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<wiki_page>
+<text>
+h1. Servers
+
+{{toc}}
+
+h2. General information
+
+* We use "Kernel-based Virtual Machines":http://www.linux-kvm.org/.
+** Useful: "Best practices for KVM":https://www.ibm.com/support/knowledgecenter/linuxonibm/liaat/liaatbestpractices_pdf.pdf (PDF by IBM)
+* All VMs on all machines run on "Debian Jessie":https://www.debian.org/releases/stable/.
+
+h2. Public IP Address
+
+Our public IPv4 address is *@193.40.12.227@*. You might need it in case our partners outside STACC want to allow IP-based access to their resources.
+
+You can check the IP address yourself while in STACC office and connected to the network via cable. Go to http://whatismyipaddress.com/ -- it shall display information like _Your IPv4 Address Is: <IP Addess>_.
+
+h2. Networking devices
+
+|_.Machine  name                                |_.Model                                                 |_.Private IP           |_.Access/Web Interface                          |_.Notes |
+|>. @stacc-sw1.stacc.ee@                 |  Cisco SG300-52                               | @10.6.6.250@    |       https://stacc-sw1.stacc.ee/                  |  users  |
+|>. @stacc-ut-sw1.stacc.ee@            | Cisco SG300-28                                 |@10.6.6.254@    |       https://stacc-ut-sw1.stacc.ee/              |  UT-network  |
+|>. @stacc-sw3.stacc.ee@                 |  Cisco SG300-28                                | @10.6.6.252@   |        https://stacc-sw3.stacc.ee/                 |  servers   |
+|>. @mikrotik.stacc.ee@                     |  Mikrotik CCR-1009-8G-115-15+    |@10.6.6.1@         |        https://mikrotik.stacc.ee/                       |  DHCP, firewall |
+|>. @tta.stacc.ee@                               |  Cisco linksys-ea 6500                      | @10.5.0.3@        |        https://tta.stacc.ee/                                    |   TTA wifi |
+|>.            |  Cisco air-lap-1131ag-e-k9               |                              |                                                                        |  ut-public wifi    |
+|>.                                  |  Cisco SG300-28                                |                             |                                                                        |  unused   |
+|>.                           |  TP-link tl-sg1024D                            |                              |                                                                        |  unused   |
+|>.                     |  Linksys srw2024                               |                             |                                                                        |  unused   |
+|>.                   |  Linksys srw2024                               |                             |                                                                        |  unused   |
+
+h2. Virtual Machines
+
+|_.Machine |_.Hostname |_.Private IP|_.Public IP |_.Debian Version |_.Cores |_.RAM |_.Disk Type|_.Disk Size|_.Internal Firewall| 
+|/9.vmfarm1
+| icinga.stacc.ee  | 10.6.6.27 | 193.40.12.227 | 9.3 |  4 | 4GB |  HDD  | 15GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556 9200  |
+| ldap.stacc.ee  | 10.6.6.37 | 193.40.12.227 | 9.1 |  4 | 4GB |  HDD  | 148GB | 22 25 53 67 68 80 123 389 443 636 873 5678 6556  |
+| mail.stacc.ee  | 10.6.6.40 | 193.40.12.234 | 9.1 |  4 | 6GB |  HDD  | 168GB | 22 25 68 80 123 143 443 465 587 993 6556  |
+| openvpn.stacc.ee  | 10.6.6.58 | 193.40.12.227 | 9.1 |  6 | 3GB |  HDD  | 9,8GB | 22 68 123 500 1194 6556  |
+| ns.stacc.ee  | 10.6.6.78 | 193.40.12.227 | 9.1 |  4 | 4GB |  HDD  | 25GB | 22 25 53 67 68 80 123 389 443 873 5678 6556  |
+| redmine.stacc.ee  | 10.6.6.134 | 193.40.12.227 | 9.3 |  6 | 3GB |  HDD  | 148GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556  |
+| owncloud.stacc.ee  | 10.6.6.151 | 193.40.12.227 | 9.1 |  6 | 3GB |  HDD  | 148GB | 22 25 53 67 68 80 123 389 443 873 5044 5432 5678 6556  |
+| www.stacc.ee  | 10.6.6.187 | 193.40.12.227 | 9.1 |  4 | 4GB |  HDD  | 148GB | 21 22 25 53 67 68 80 123 389 443 873 2049 5678 6556  |
+| git.stacc.ee  | 10.6.6.238 | 193.40.12.227 | 9.3 |  6 | 5GB |  HDD  | 148GB | 22 25 53 67 68 80 123 389 443 636 873 5678 6556 9418  |
+|/4.maximus
+| elasticsearch.stacc.ee  | 10.6.6.44 | 193.40.12.227 | 9.1 |  4 | 58GB |  HDD  | 99GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556 9200 9300  |
+| jenkins.stacc.ee  | 10.6.6.47 |  | 9.1 |  2 | 18GB |  HDD  | 20GB | 22 25 53 67 68 80 123 389 443 873 5678 6556 8080 8443  |
+| egcut.stacc.ee  | 10.6.6.48 | 193.40.12.227 | 9.1 |  2 | 4GB |  HDD  | 20GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556  |
+| demo.stacc.ee  | 10.6.6.64 | 193.40.12.227 | 9.4 |  4 | 29GB |  HDD  | 197GB |  |
+/1.firefly
+| client.stacc.ee  | 10.6.6.71 |  | 9.3 |  1 | 143GB |  HDD  | 1.4TB | 21 22 25 53 67 68 80 123 389 443 873 3350 3389 5000 5432 5555 5678 6556 8000 8770 8787 9200 27017  |
+|/3.texta-host 
+| law.texta.ee  | 10.6.6.91 | 193.40.12.227 | 8.8 |  4 | 6GB |  HDD  | 46GB |  |
+| dev.texta.ee  | 10.6.6.92 | 193.40.12.227 | 9.1 |  48 | 23GB |  HDD  | 782GB |  |
+| elastic.texta.ee  | 10.6.6.93 | 193.40.12.227 | 8.7 |  12 | 33GB |  HDD  | 290GB |  |
+
+h2. UT firewall
+
+|_.Name                   |_.Ports in                                                                                                                                                                                                                                                                        |_.Ports out           |_.Notes           |
+|>. @barclay@         |  smtp_25, pop3_110, imap_143, imap-ssl_993, pop3-ssl_995, https_443, smtp-s_465, tcp_587, http/80, https/443                                                                                                 | smtp_25, DNS    |                        |
+|>. @demo@            | http_80, https_443, tcp_6556, tcp_8080, tcp_8443, tcp_8000-8020, tcp_22                                                                                                                                                              |                             |                        |
+|
+|>. @git@                  |  http_80, https_443                                                                                                                                                                                                                                                     |                             |                         |
+|>. @icinga@            |  http_80, https_443                                                                                                                                                                                                                                                      |                            |                          |
+|>. @mail@               |  smtp_25, pop3_110, imap_143, imap-ss_993, pop3-ssl_995, https_443, smtp-s_465, tcp_587, tcp_22, http_80, https_443, tcp_81, cp-ssl_444, tcp_8080, tcp_8443-8446       |   smtp-25, DNS  |                          |
+|>. @offcloud@         |  http_80, https_443, smtp_25                                                                                                                                                                                                                                       |  smtp-25, DNS    |                         |
+|>.  @openvpn@      |  tcp_22, tcp_1194, udp_1194                                                                                                                                                                                                                                      |                               |                      |
+|>.  @public@           |  tcp_22, http_80, https_443                                                                                                                                                                                                                                        |                                |                   |
+|>.  @redmine@      |  http_80, https_443                                                                                                                                                                                                                                                         |                           |                    |
+|>.  @tehnopol@     |  kõik net_193.40.12.224/28                                                                                                                                                                                                                                            |  kõik net_193.40.12.224/28                           |                    |
+|>.  @texta@          |  http_80, https_443                                                                                                                                                                                                                                                           |                           |                     |
+</text>
+</wiki_page>

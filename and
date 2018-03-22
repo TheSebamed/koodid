@@ -1,0 +1,11 @@
+#!/bin/bash
+
+var=$(lsmod | grep kvm | awk 'NR==1{print $3}'  2>/dev/null)
+dtype='nil'
+if [ $var = 0 ]; then
+        dtype=' no '
+else
+    dtype = 'yes'
+fi
+
+echo $dtype

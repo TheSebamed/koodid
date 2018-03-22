@@ -1,0 +1,43 @@
+#!/bin/bash
+# Andmed masina kohta
+clear
+
+# Machine name
+printf "Machine name:		" && hostname
+
+# Private IP address
+printf "Private IP address:	" && hostname -I
+
+# Public IP address
+printf "Public IP address:      " && dig +short myip.opendns.com @resolver1.opendns.com
+
+# Kernel version
+printf "Kernel version:		" && uname -v | awk -F"Debian" '{print $2}' | cut -d ' ' -f2 | cut -d '-' -f1
+
+#Debian Version
+printf "Debian version:		" &&  cat /etc/debian_version
+
+# Tuumasid systeemis
+printf "Tuumasid: 	        " && cat /proc/cpuinfo | grep -c "processor"
+
+# Memory
+printf "Memory:			" && free -h | gawk '/Mem:/{print $2}' | awk 'FNR == 1 {print $1 "B"}'
+
+
+var=$(cat /sys/block/vda/queue/rotational)
+dtype='nil'
+if [ $var = 0 ]; then
+        dtype=' SSD '
+elif [ $var = 1 ]; then
+        dtype=' HDD '
+fi
+#echo 'DISK TYPE ' $dtype
+
+#disk type
+printf "Disk type:             %s\n" "$dtype"
+# Hard disk space
+printf "Hard disk space:        " && df -hT /home | awk 'FNR == 2 {print $3 "B"}'
+
+# exit
+
+

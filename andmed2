@@ -1,0 +1,14 @@
+#!/bin/bash
+# Andmed masina kohta
+# Memory
+memory1=$(free -h | gawk '/Mem:/{print $2}')
+#memory2=$(awk 'BEGIN{printf "%3.0f\n", $memory1}'|awk 'FNR == 1 {print $1 "GB"}')
+memory3=$(echo $memory1 | awk '{print int($1+0.5)}')
+
+
+# Hard disk space
+space=$(df -hT /home | awk 'FNR == 2 {print $3 "B"}')
+
+
+printf $memory1,  $memory3, $space
+# exit

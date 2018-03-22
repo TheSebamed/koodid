@@ -1,0 +1,85 @@
+#!/bin/bash
+# Andmete skripti masinatesse saatmine.
+
+#Send file to remote machine.
+#Icinga
+./andmed1
+
+#ldap
+ssh root@ldap.stacc.ee 'bash -s' < andmed1
+ssh root@ldap.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#mail
+ssh root@mail.stacc.ee 'bash -s' < andmed1
+ssh root@mail.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#openvpn
+ssh root@openvpn.stacc.ee 'bash -s' < andmed1
+ssh root@openvpn.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#dns
+ssh root@dns.stacc.ee 'bash -s' < andmed1
+ssh root@dns.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#redmine
+ssh root@redmine.stacc.ee 'bash -s' < andmed1
+ssh root@redmine.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#owncloud
+ssh root@owncloud.stacc.ee 'bash -s' < andmed1
+ssh root@owncloud.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#www
+ssh root@www.stacc.ee 'bash -s' < andmed1
+ssh root@www.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+#git
+ssh root@git.stacc.ee 'bash -s' < andmed1
+ssh root@git.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+
+echo '|/9.vmfarm1' >  farm1
+cat farm1 arvutid.txt > masinad.txt
+rm farm1 arvutid.txt
+
+echo '|/4.maximus' >> masinad.txt
+
+#Elasticsearch
+ssh root@elasticsearch.stacc.ee 'bash -s' < andmed1
+ssh root@elasticsearch.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+#jenkins
+ssh root@jenkins.stacc.ee 'bash -s' < andmed1
+ssh root@jenkins.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+#egcut
+ssh root@egcut.stacc.ee 'bash -s' < andmed1
+ssh root@egcut.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+#demo
+ssh root@demo.stacc.ee 'bash -s' < andmed1
+ssh root@demo.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+echo '/1.firefly' >> masinad.txt
+
+#client
+ssh root@client.stacc.ee 'bash -s' < andmed1
+ssh root@client.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+echo '|/3.texta-host ' >> masinad.txt
+
+#live
+ssh root@live.stacc.ee 'bash -s' < andmed1
+ssh root@live.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+#dev
+ssh root@10.6.6.92 'bash -s' < andmed1
+ssh root@10.6.6.92 cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+#Elastic
+ssh root@10.6.6.93 'bash -s' < andmed1
+ssh root@10.6.6.93 cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+
+
+#Paneb failid kokku
+cat upper masinad.txt lower > alltogether.xml
+
