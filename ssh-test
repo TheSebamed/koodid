@@ -1,5 +1,5 @@
 #!/bin/bash
-# Andmete skripti masinatesse saatmine.
+# Script that sends a bash script into your servers/machines and asks for its specification and information.
 
 #Send file to remote machine.
 #Icinga
@@ -37,6 +37,7 @@ ssh root@www.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
 ssh root@git.stacc.ee 'bash -s' < andmed1
 ssh root@git.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
 
+#Echo's vmfarm1 and makes a table, takes 9 rows.
 echo '|/9.vmfarm1' >  farm1
 cat farm1 arvutid.txt > masinad.txt
 rm farm1 arvutid.txt
