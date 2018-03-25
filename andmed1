@@ -1,5 +1,5 @@
 #!/bin/bash
-# Andmed masina kohta
+# Information about the machine.
 clear
 
 # Machine name
@@ -14,7 +14,7 @@ Pub_IP=$(dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl 
 #Debian Version
 Deb_Version=$(cat /etc/debian_version)
 
-# Tuumasid systeemis
+# Core's in the system.
 core=$(cat /proc/cpuinfo | grep -c "processor")
 
 # Memory
@@ -26,7 +26,7 @@ memory=$(
       printf "%.0f%sB\n", $2, suffix
     }'
 )
-
+# Check if your system is using SSD/HDD. Note: some machines could use different drive names.
 var=$(cat /sys/block/vda/queue/rotational 2>/dev/null || cat /sys/block/sda/queue/rotational 2>/dev/null)
 dtype='nil'
 if [ $var = 0 ]; then
@@ -44,7 +44,6 @@ space=$(df -hT /home | awk 'FNR == 2 {print $3 "B"}')
 #Open ports
 ports=$(cat /etc/firewall.conf | grep -e dport | awk -F "--dport" '{print $2}' | cut -d" " -f2 | sort -u | sort -n | tr '\n' ' ' 2>/dev/null)
 
-#echo '|' $host '|'   $hostname  '|'    $Pub_IP '|'    $Kernel_Version '|'   $Deb_Version  '|'    $core '|'   $memory '|'   $dtype '|'    $space '|'  $ports '|' > arvutid.txt
 printf '| %s | %s | %s | %s | %s | %s | %s | %s | %s |\n' "$host" "$hostname" "$Pub_IP" "$Deb_Version" " $core" "$memory" "$dtype" "$space"  "$ports" > arvutid.txt
 # exit
 
