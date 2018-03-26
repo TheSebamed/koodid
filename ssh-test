@@ -3,84 +3,84 @@
 
 #Send file to remote machine.
 #Icinga
-./andmed1
+./virtualservers.sh
 
 #ldap
-ssh root@ldap.stacc.ee 'bash -s' < andmed1
-ssh root@ldap.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@ldap.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@ldap.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #mail
-ssh root@mail.stacc.ee 'bash -s' < andmed1
-ssh root@mail.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@mail.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@mail.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #openvpn
-ssh root@openvpn.stacc.ee 'bash -s' < andmed1
-ssh root@openvpn.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@openvpn.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@openvpn.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #dns
-ssh root@dns.stacc.ee 'bash -s' < andmed1
-ssh root@dns.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@dns.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@dns.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #redmine
-ssh root@redmine.stacc.ee 'bash -s' < andmed1
-ssh root@redmine.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@redmine.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@redmine.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #owncloud
-ssh root@owncloud.stacc.ee 'bash -s' < andmed1
-ssh root@owncloud.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@owncloud.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@owncloud.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #www
-ssh root@www.stacc.ee 'bash -s' < andmed1
-ssh root@www.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@www.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@www.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #git
-ssh root@git.stacc.ee 'bash -s' < andmed1
-ssh root@git.stacc.ee cat /root/arvutid.txt >> /root/loputoo/arvutid.txt
+ssh root@git.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@git.stacc.ee cat /root/vm_machines.txt >> /root/loputoo/vm_machines.txt
 
 #Echo's vmfarm1 and makes a table, takes 9 rows.
 echo '|/9.vmfarm1' >  farm1
-cat farm1 arvutid.txt > masinad.txt
-rm farm1 arvutid.txt
+cat farm1 vm_machines.txt > vm_machines2.txt
+rm farm1 vm_machines.txt
 
 echo '|/4.maximus' >> masinad.txt
 
 #Elasticsearch
-ssh root@elasticsearch.stacc.ee 'bash -s' < andmed1
-ssh root@elasticsearch.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@elasticsearch.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@elasticsearch.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 #jenkins
-ssh root@jenkins.stacc.ee 'bash -s' < andmed1
-ssh root@jenkins.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@jenkins.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@jenkins.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 #egcut
-ssh root@egcut.stacc.ee 'bash -s' < andmed1
-ssh root@egcut.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@egcut.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@egcut.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 #demo
-ssh root@demo.stacc.ee 'bash -s' < andmed1
-ssh root@demo.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@demo.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@demo.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
-echo '/1.firefly' >> masinad.txt
+echo '/1.firefly' >> vm_machines2.txt
 
 #client
-ssh root@client.stacc.ee 'bash -s' < andmed1
-ssh root@client.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@client.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@client.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
-echo '|/3.texta-host ' >> masinad.txt
+echo '|/3.texta-host ' >> vm_machines2.txt
 
 #live
-ssh root@live.stacc.ee 'bash -s' < andmed1
-ssh root@live.stacc.ee cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@live.stacc.ee 'bash -s' < virtualservers.sh
+ssh root@live.stacc.ee cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 #dev
-ssh root@10.6.6.92 'bash -s' < andmed1
-ssh root@10.6.6.92 cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@10.6.6.92 'bash -s' < virtualservers.sh
+ssh root@10.6.6.92 cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 #Elastic
-ssh root@10.6.6.93 'bash -s' < andmed1
-ssh root@10.6.6.93 cat /root/arvutid.txt >> /root/loputoo/masinad.txt
+ssh root@10.6.6.93 'bash -s' < virtualservers.sh
+ssh root@10.6.6.93 cat /root/arvutid.txt >> /root/loputoo/vm_machines2.txt
 
 
 #Paneb failid kokku
-cat upper masinad.txt lower > alltogether.xml
+cat upper.txt vm_machines2.txt lower.txt > alltogether.xml
 
