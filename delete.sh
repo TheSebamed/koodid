@@ -8,12 +8,12 @@ Vm_Hosts=( icinga.stacc.ee ldap.stacc.ee mail.stacc.ee openvpn.stacc.ee dns.stac
 
 DeleteFiles () {
         local host="$1"
-        ssh "root@$host" rm -f /tmp/phy_machines.txt
+        ssh "root@$host" rm -f /tmp/phy_machines.txt /tmp/openports.txt
 }
 
 DeleteFiles1 () {
         local host1="$1"
-        ssh "root@$host1" rm -f /tmp/vm_machines.txt
+        ssh "root@$host1" rm -f /tmp/vm_machines.txt /tmp/openports.txt
 }
 
 

@@ -50,10 +50,12 @@ fi
 space=$(df -hT /home | awk 'FNR == 2 {print $3 "B"}')
 
 #Full Space
-#fullspace=$(cat /sys/block/sda/subsystem/sda*/size | paste -sd+ -| bc | awk '{ s=$1/(1024^2)  ;} END { printf "%dGB\n",s}')
-fullspace=$(cat /proc/partitions  | awk '/sd[a-z]$/{printf "%s %8.2f GB\n", $NF, $(NF-1) / 1024 / 1024}' | cut -d " " -f4 | awk '{printf("%d\n",$1 + 0.5)}' | paste -sd+ | bc)
+fullspace=$(lshw -quiet -class disk -class storage -xml | xmlstarlet sel -t -v //size -n | paste -sd + - | bc | numfmt --to=si --suffix=B)
 
-printf '| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |\n' "$host" "$hostname" "$Pub_IP" "$vtype" "$Deb_Version" " $core" "$memory" "$dtype" "$space" "$fullspace"  > /tmp/phy_machines.txt
+#Open Ports from External network
+openports=$(nmap localhost | grep "open " | cut -d "/" -f1 | tr '\n' ' ' | nmap "$host" | grep "open " | cut -d "/" -f1 | tr '\n' ' ' )
+
+printf '| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |\n' "$host" "$hostname" "$Pub_IP" "$vtype" "$Deb_Version" " $core" "$memory" "$dtype" "$space" "$fullspace" "$openports"  > /tmp/phy_machines.txt
 
 # exit
 

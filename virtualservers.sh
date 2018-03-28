@@ -42,8 +42,10 @@ space=$(df -hT /home | awk 'FNR == 2 {print $3 "B"}')
 
 #Open ports
 ports=$(cat /etc/firewall.conf | grep -e dport | awk -F "--dport" '{print $2}' | cut -d" " -f2 | sort -u | sort -n | tr '\n' ' ' 2>/dev/null)
+openports=$(nmap localhost | grep "open " | cut -d "/" -f1 | tr '\n' ' ' || nmap "$host" | grep "open " | cut -d "/" -f1 | tr '\n' ' ' )
 
-printf '| %s | %s | %s | %s | %s | %s | %s | %s | %s |\n' "$host" "$hostname" "$Pub_IP" "$Deb_Version" " $core" "$memory" "$dtype" "$space"  "$ports" > /tmp/vm_machines.txt
+
+printf '| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |\n' "$host" "$hostname" "$Pub_IP" "$Deb_Version" " $core" "$memory" "$dtype" "$space"  "$ports" "$openports"> /tmp/vm_machines.txt
 # exit
 
 
