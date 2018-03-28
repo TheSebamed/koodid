@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<wiki_page>
+<text>
+h1. Servers
+
+{{toc}}
+
+h2. General information
+
+* We use "Kernel-based Virtual Machines":http://www.linux-kvm.org/.
+** Useful: "Best practices for KVM":https://www.ibm.com/support/knowledgecenter/linuxonibm/liaat/liaatbestpractices_pdf.pdf (PDF by IBM)
+* All VMs on all machines run on "Debian Jessie":https://www.debian.org/releases/stable/.
+
+h2. Public IP Address
+
+Our public IPv4 address is *@193.40.12.227@*. You might need it in case our partners outside STACC want to allow IP-based access to their resources.
+
+You can check the IP address yourself while in STACC office and connected to the network via cable. Go to http://whatismyipaddress.com/ -- it shall display information like _Your IPv4 Address Is: "IP Addess"_.
+
+h2. Networking devices
+
+|_.Machine  name            |_.Model                        |_.Private IP  |_.Access/Web Interface             |_.Notes          |
+|>. @stacc-sw1.stacc.ee@    | Cisco SG300-52                | @10.6.6.250@ |       https://stacc-sw1.stacc.ee/ | users           |
+|>. @stacc-ut-sw1.stacc.ee@ | Cisco SG300-28                | @10.6.6.254@ | https://stacc-ut-sw1.stacc.ee/    | UT-network      |
+|>. @stacc-sw3.stacc.ee@    | Cisco SG300-28                | @10.6.6.252@ |https://stacc-sw3.stacc.ee/        | servers         |
+|>. @mikrotik.stacc.ee@     | Mikrotik CCR-1009-8G-115-15+  | @10.6.6.1@   |https://mikrotik.stacc.ee/         | DHCP, firewall  |
+|>. @tta.stacc.ee@          | Cisco linksys-ea 6500         | @10.5.0.3@   |https://tta.stacc.ee/              | TTA wifi        |
+|>. 			    | Cisco air-lap-1131ag-e-k9     |              |                                   |  ut-public wifi |
+|>.                         | Cisco SG300-28                |              |                                   | unused          |
+|>.                         | TP-link tl-sg1024D            |              |                                   | unused          |
+|>.                         | Linksys srw2024               |              |                                   | unused          |
+|>.                         | Linksys srw2024               |              |                                   | unused          |
+
