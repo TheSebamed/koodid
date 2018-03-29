@@ -1,6 +1,6 @@
 #!/bin/bash
-set -x
-
+#set -x
+THE FOLLOWING SCRIPT IS NOT REQUIRED FOR THIS JOB. IT IS DONE VIA virtualservers.sh and servers.sh
 # Location where bash scripts are located.
 openports=/opt/wiki_scripts/ports.sh
 
