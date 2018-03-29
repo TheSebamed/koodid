@@ -1,6 +1,6 @@
 #!/bin/bash
-set -x
-
+#set -x
+# THE FOLLOWING SCRIPT IS NOT REQUIRED FOR THIS JOB. IT IS ALREADY DONE VIA proginst.sh
 # Location where bash scripts are located.
 installs=/opt/wiki_scripts/install.sh
 
