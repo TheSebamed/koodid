@@ -33,19 +33,19 @@ h2. Networking devices
 
 h2. Physical machines
 
-|_.Machine  name|_.Private IP |_.Public IP|_.Virtualisation|_.OS|_.Cores|_.Memory|_.HDD/SSD|_.Machine Space|_.Total Disk Space|_.Ports |
+|_.Machine  name|_.Private IP |_.Public IP|_.Virtualisation|_.OS|_.Cores|_.Memory|_.HDD/SSD|_.Machine Space|_.Total Disk Space|_.External Ports |
 | vmfarm1.stacc.ee | 10.6.6.88 | 193.40.12.227 | yes | 9.2 |  4 | 31GB |  HDD  | 18GB | 4,1TB | 22 25 111  |
 | barclay.stacc.ee | 10.6.6.12 | 193.40.12.227 | no | 9.2 |  8 | 23GB |  HDD  | 2.6TB | 4.1TB | 22 5000 5001 5432 6002 7103 7106 7201 9200  |
 | p12.stacc.ee | 10.6.6.29 | 193.40.12.227 | no | 9.4 |  32 | 378GB |  HDD  | 6.3TB | 7.3TB | 22 25 80 111 113 443 1098 1099 4444 4445 4446 5432 8009 8080 8083 8088 8089 8443  |
 | maximus.stacc.ee | 10.6.6.210 | 193.40.12.227 | yes | 9.1 |  12 | 126GB |  SSD  | 20GB | 2,6TB | 22  |
 | backup.stacc.ee | 10.6.6.13 | 193.40.12.227 | no | 9.1 |  8 | 6GB |  HDD  | 7,3TB | 13TB | 22 111  |
 | firefly.stacc.ee | 10.6.6.77 |  | yes | 9.1 |  24 | 204GB |  HDD  | 30GB | 2,0TB | 22 111  |
-| accountant.stacc.ee | 10.5.0.125 | 193.40.12.227 | no | 7.6 |  4 | 991MB |  HDD  | 20GB |  | 22 25  |
+| accountant.stacc.ee | 10.5.0.125 | 193.40.12.227 | no | 7.6 |  4 | 991MB |  HDD  | 20GB | 320GB | 22 25  |
 | texta-host | 10.6.6.90 | 193.40.12.227 | yes | 8.9 |  32 | 62GB |  HDD  | 95GB | 2.1TB | 22 111 2049 3128  |
 
 h2. Virtual Machines 
 
-|_.Machine |_.Hostname |_.Private IP|_.Public IP |_.Debian Version |_.Cores |_.RAM |_.Disk Type|_.Disk Size|_.Internal Firewall| Ports | 
+|_.Machine |_.Hostname |_.Private IP|_.Public IP |_.Debian Version |_.Cores |_.RAM |_.Disk Type|_.Disk Size|_.Internal Firewall|_.External Ports | 
 |/9.vmfarm1 | icinga.stacc.ee  | 10.6.6.27 | 193.40.12.227 | 9.3 |  4 | 4GB |  HDD  | 15GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556 9200  | 22 80 111 443 3306 5000 9200  |
 | ldap.stacc.ee  | 10.6.6.37 | 193.40.12.227 | 9.1 |  4 | 4GB |  HDD  | 148GB | 22 25 53 67 68 80 123 389 443 636 873 5678 6556  | 22 80 139 389 443 445 636  |
 | mail.stacc.ee  | 10.6.6.40 | 193.40.12.234 | 9.1 |  4 | 6GB |  HDD  | 168GB | 22 25 68 80 123 143 443 465 587 993 6556  | 22 25 80 143 443 465 587 783 993 3306  |
@@ -61,23 +61,8 @@ h2. Virtual Machines
 | egcut.stacc.ee  | 10.6.6.48 | 193.40.12.227 | 9.1 |  2 | 4GB |  HDD  | 20GB | 22 25 53 67 68 80 123 389 443 873 5044 5678 6556  | 22 80 443  |
 | demo.stacc.ee  | 10.6.6.64 | 193.40.12.227 | 9.4 |  4 | 29GB |  HDD  | 197GB |  | 22 80 443 8000 8001 8002 8007 8009 8011  |
 |/1.firefly | client.stacc.ee  | 10.6.6.71 |  | 9.3 |  1 | 143GB |  HDD  | 1.4TB | 21 22 25 53 67 68 80 123 389 443 873 3350 3389 5000 5432 5555 5678 6556 8000 8770 8787 9200 27017  | 22 80 443 3306 5000 5432 6002 6003 7103 7201 8000 8009 9200  |
- |/3.texta-host | dev.texta.ee  | 10.6.6.92 | 193.40.12.227 | 9.1 |  48 | 23GB |  HDD  | 782GB |  | 22 25 80 111 5000 8000 9050 9200  |
+ |/3.texta-host | live.texta.ee  | 10.6.6.91 | 193.40.12.227 | 8.8 |  4 | 6GB |  HDD  | 46GB |  | 22 25 80 111 443 5000 8000 32784 32785  |
+| dev.texta.ee  | 10.6.6.92 | 193.40.12.227 | 9.1 |  48 | 23GB |  HDD  | 782GB |  | 22 25 80 111 5000 8000 9050 9200  |
 | elastic.texta.ee  | 10.6.6.93 | 193.40.12.227 | 8.7 |  12 | 33GB |  HDD  | 290GB |  | 22 25 111 9200  |
-
-h2. UT firewall
-
-|_.Name          |_.Ports in                                                                                                     |_.Ports out      |_.Notes       |
-|>. @barclay@    | smtp_25, pop3_110, imap_143, imap-ssl_993, pop3-ssl_995, https_443, smtp-s_465, tcp_587, http/80, https/443   | smtp_25, DNS    |              |
-|>. @demo@       | http_80, https_443, tcp_6556, tcp_8080, tcp_8443, tcp_8000-8020, tcp_22                                       |                 |              |
-|
-|>. @git@        | http_80, https_443                                                                                            |                 |              |
-|>. @icinga@     | http_80, https_443                                                                                            |                 |              |
-|>. @mail@       | smtp_25, pop3_110, imap_143, imap-ss_993, pop3-ssl_995, https_443, smtp-s_465, tcp_587, tcp_22, http_80, https_443, tcp_81, cp-ssl_444, tcp_8080, tcp_8443-8446   | smtp-25, DNS  |            |
-|>. @offcloud@   | http_80, https_443, smtp_25                                                                                   | smtp-25, DNS   |               |
-|>.  @openvpn@   | tcp_22, tcp_1194, udp_1194                                                                                    |                |               |
-|>.  @public@    | tcp_22, http_80, https_443                                                                                    |                |               |
-|>.  @redmine@   | http_80, https_443                                                                                            |                |               |
-|>.  @tehnopol@  | kõik net_193.40.12.224/28                                                                                     | kõik net_193.40.12.224/28      |
-|>.  @texta@     | http_80, https_443                                                                                            |                |               |
 </text>
 </wiki_page>

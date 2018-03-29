@@ -50,7 +50,7 @@ fi
 space=$(df -hT /home | awk 'FNR == 2 {print $3 "B"}')
 
 #Full Space
-fullspace=$(lshw -quiet -class disk -class storage -xml | xmlstarlet sel -t -v //size -n | paste -sd + - | bc | numfmt --to=si --suffix=B)
+fullspace=$(lshw -quiet -class disk -class storage -xml | xmlstarlet sel -t -v //size -n | paste -sd + - | bc | numfmt --to=si --suffix=B 2>/dev/null || lshw -class disk -class storage | grep size: | cut -d "(" -f2 | cut -d ")" -f1 | sed -e 's/[^0-9]/ /g' | paste -sd+ | bc | awk '{print $1"GB"}' )
 
 #Open Ports from External network
 openports=$(nmap localhost | grep "open " | cut -d "/" -f1 | tr '\n' ' ' | nmap "$host" | grep "open " | cut -d "/" -f1 | tr '\n' ' ' )
