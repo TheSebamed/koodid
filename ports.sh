@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-
+THE FOLLOWING SCRIPT IS NOT REQUIRED FOR THIS JOB. IT IS DONE VIA virtualservers.sh and servers.sh
 # Machine name
 host=$(hostname -A | cut -d " " -f1)
 
